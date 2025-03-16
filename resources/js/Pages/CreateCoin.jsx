@@ -69,7 +69,7 @@ const CreateToken = () => {
     const [wallet, setWallet] = useState(null);
     const [tokenAddress, setTokenAddress] = useState("");
     const [amount, setAmount] = useState("");
-    const connection = new Connection("https://mainnet.helius-rpc.com/?api-key=4e1dd84a-3cb2-4dc2-b445-59659e89357d", "confirmed");
+    const connection = new Connection("https://devnet.helius-rpc.com/?api-key=4e1dd84a-3cb2-4dc2-b445-59659e89357d", "confirmed");
     const [tokenIcon, setTokenIcon] = useState(null);
     const [tokenName, setTokenName] = useState("");
     const [tokenSymbol, setTokenSymbol] = useState("");
@@ -227,7 +227,7 @@ const CreateToken = () => {
             transaction.recentBlockhash = blockhash;
             transaction.feePayer = wallet.publicKey;
 
-            // transaction.sign(mintKeypairGenerated);
+            transaction.sign(mintKeypairGenerated);
             // const { signature } = await provider.signAndSendTransaction(transaction);
             const { signature } = await provider.signAndSendTransaction(transaction);
             await connection.confirmTransaction(signature, "confirmed");
